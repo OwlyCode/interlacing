@@ -1,0 +1,17 @@
+{
+    "name": "owlycode/interlacing",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "OwlyCode",
+            "email": "tmaindron@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "OwlyCode\\Interlacing\\": "src/"
+        }
+    }
+}
