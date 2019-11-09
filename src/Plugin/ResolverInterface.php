@@ -2,7 +2,7 @@
 
 namespace OwlyCode\Interlacing\Plugin;
 
-interface ResolutionInterface
+interface ResolverInterface
 {
     public function resolve($name): ?string;
 }

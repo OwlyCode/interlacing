@@ -1,0 +1,12 @@
+content:
+    root: ["{{ animal|store(hero)|capitalize }} was {{ level }} at {{ skill }}. {{ statement|capitalize }}"]
+    animal: [ "the dog", "the cat", "the mouse", "the parrot"]
+    level:
+        - "good{{ appreciation|store(statement)|silence }}"
+        - "ok{{ neutral|store(statement)|silence }}"
+        - "bad{{ depreciation|store(statement)|silence }}"
+    skill: [ "climbing", "swimming" ]
+    appreciation: ["it was really the best.", "it was so impressive!"]
+    neutral: ["I guess this is what they usually do.", "so it wasn't really that fantastic."]
+    depreciation: ["it needed some more {{ need }}.", "it could have done better with more {{ need }}."]
+    need: ["training", "healthy food", "hugs"]

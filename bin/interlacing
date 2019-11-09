@@ -1,0 +1,21 @@
+<?php
+
+use OwlyCode\Interlacing\Interlacing;
+
+require __DIR__.'/../vendor/autoload.php';
+
+try {
+    $path = $argv[1] ?? null;
+
+    if (!$path) {
+        throw new \RuntimeException('Missing argument: grammar file path.');
+    }
+
+    $p = Interlacing::fromFile($path);
+
+    echo $p->resolve('root')."\n";
+} catch (\Exception $e) {
+    echo 'ERROR: '.$e->getMessage();
+
+    exit(1);
+}

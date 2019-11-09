@@ -1,0 +1,3 @@
+content:
+    root: "{{ animal|s }}"
+    animal: ["cat", "dog", "mouse"]

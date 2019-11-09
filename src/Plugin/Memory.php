@@ -2,16 +2,16 @@
 
 namespace OwlyCode\Interlacing\Plugin;
 
-use OwlyCode\Interlacing\Parser;
+use OwlyCode\Interlacing\Interlacing;
 
-class Memory implements AlterationInterface, ResolutionInterface
+class Memory implements AlterationInterface, ResolverInterface
 {
     private $memory;
 
-    public function __construct(Parser $parser)
+    public function __construct(Interlacing $interlacing)
     {
         $this->memory = [];
-        $this->parser = $parser;
+        $this->interlacing = $interlacing;
     }
 
     public function resolve($name): ?string
@@ -19,7 +19,7 @@ class Memory implements AlterationInterface, ResolutionInterface
         $memory = $this->memory[$name] ?? null;
 
         if (is_array($memory)) {
-            return $this->parser->pick($memory);
+            return $this->interlacing->pick($memory);
         }
 
         return $memory;
@@ -42,7 +42,7 @@ class Memory implements AlterationInterface, ResolutionInterface
 
     public function storeAll(string $placeholder, string $input, array $args): string
     {
-        $this->memory[$args[0]] = $this->parser->getGrammar()[$placeholder];
+        $this->memory[$args[0]] = $this->interlacing->getGrammar()[$placeholder];
 
         return $input;
     }
@@ -65,7 +65,7 @@ class Memory implements AlterationInterface, ResolutionInterface
         }
 
         $this->memory[$location] = array_filter($this->memory[$location], function ($value) use ($input) {
-            return $value != $input;
+            return $value !== $input;
         });
 
         return $input;

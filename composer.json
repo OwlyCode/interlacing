@@ -8,10 +8,19 @@
             "email": "tmaindron@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/yaml": "^4.3",
+        "doctrine/inflector": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "OwlyCode\\Interlacing\\": "src/"
         }
-    }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "bin": [
+        "bin/interlacing"
+    ]
 }
